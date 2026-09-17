@@ -1,0 +1,426 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ryan Simons · From varsity to Software Engineer</title>
+<meta name="description" content="An alumni talk for UFS students: how I got from a degree to a software engineering career in the Netherlands.">
+<meta name="color-scheme" content="light dark">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="styles.css">
+<script>
+  /* Runs before paint: marks JS as available and restores the saved theme with no flash. */
+  document.documentElement.classList.add('js');
+  try {
+    var saved = localStorage.getItem('ufs-theme');
+    if (saved) document.documentElement.setAttribute('data-theme', saved);
+  } catch (e) {}
+</script>
+</head>
+<body>
+
+<div class="progress" aria-hidden="true"><div class="progress__bar" id="progressBar"></div></div>
+
+<header class="topbar">
+  <a class="brand" href="#intro">
+    <span class="brand__mark" aria-hidden="true">&lt;/&gt;</span>
+    <span class="brand__text"><b>Ryan Simons</b><span class="brand__sub">UFS Alumni Talk</span></span>
+  </a>
+  <button class="iconbtn" id="themeToggle" type="button" aria-label="Switch between light and dark">
+    <svg class="i-sun" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><g stroke-linecap="round"><path d="M12 2.5v2.2M12 19.3v2.2M4.2 4.2l1.6 1.6M18.2 18.2l1.6 1.6M2.5 12h2.2M19.3 12h2.2M4.2 19.8l1.6-1.6M18.2 5.8l1.6-1.6"/></g></svg>
+    <svg class="i-moon" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M20 14.2A8.2 8.2 0 0 1 9.8 4a8.2 8.2 0 1 0 10.2 10.2z"/></svg>
+  </button>
+</header>
+
+<nav class="rail" id="rail" aria-label="Chapters">
+  <button class="rail__item" type="button" data-goto="intro">
+    <span class="rail__dot"></span><span class="rail__label"><b>01</b> Intro</span>
+  </button>
+  <button class="rail__item" type="button" data-goto="work-timeline">
+    <span class="rail__dot"></span><span class="rail__label"><b>02</b> The jobs</span>
+  </button>
+  <button class="rail__item" type="button" data-goto="gap-upskilling">
+    <span class="rail__dot"></span><span class="rail__label"><b>03</b> Bridging the gap</span>
+  </button>
+  <button class="rail__item" type="button" data-goto="questions">
+    <span class="rail__dot"></span><span class="rail__label"><b>04</b> Questions</span>
+  </button>
+</nav>
+
+<main id="deck">
+
+<!-- ============================ CHAPTER 1 · INTRO ============================ -->
+
+<section class="step step--hero" id="step-intro" data-chapter="1" data-chapter-name="Intro">
+  <div class="hero">
+    <div class="hero__photo">
+      <!-- Drop your picture in as assets/profile.jpg and it replaces the placeholder automatically. -->
+      <img src="assets/profile.jpg" alt="Ryan Simons"
+           onerror="this.onerror=null;this.src='assets/profile-placeholder.svg';this.classList.add('is-placeholder')">
+    </div>
+    <div class="hero__text">
+      <p class="eyebrow">Alumni talk</p>
+      <h1>Ryan&nbsp;Simons</h1>
+      <p class="hero__role">Software Engineer</p>
+      <p class="hero__co">
+        <span class="pin" aria-hidden="true">&#9679;</span> Nedap &middot; Netherlands (Remote)
+      </p>
+      <p class="hero__blurb">
+        How I got from a UFS degree to writing software in Europe. The work,
+        the mistakes, and what I&rsquo;d tell you to do differently.
+      </p>
+    </div>
+  </div>
+  <p class="hint"><kbd>&rarr;</kbd> or click <b>Next</b> to start</p>
+</section>
+
+<section class="step" id="step-intro-education" data-chapter="1" data-chapter-name="Intro">
+  <p class="step__kicker">Where I started</p>
+  <h2>Education</h2>
+  <ul class="degrees">
+    <li class="degree">
+      <span class="degree__cap" aria-hidden="true">
+        <svg viewBox="0 0 24 24" width="26" height="26"><path d="M12 4 2.5 9 12 14l9.5-5L12 4z"/><path d="M6.5 11.3V16c0 1.4 2.5 2.6 5.5 2.6s5.5-1.2 5.5-2.6v-4.7"/><path d="M21.5 9v5.2"/></svg>
+      </span>
+      <div>
+        <h3>BSc. Information Technology and Business Management</h3>
+        <p class="degree__years">2016 &ndash; 2018</p>
+      </div>
+    </li>
+    <li class="degree">
+      <span class="degree__cap" aria-hidden="true">
+        <svg viewBox="0 0 24 24" width="26" height="26"><path d="M12 4 2.5 9 12 14l9.5-5L12 4z"/><path d="M6.5 11.3V16c0 1.4 2.5 2.6 5.5 2.6s5.5-1.2 5.5-2.6v-4.7"/><path d="M21.5 9v5.2"/></svg>
+      </span>
+      <div>
+        <h3>BSc. Honors in Computer Science and Informatics</h3>
+        <p class="degree__years">2019 &ndash; 2019</p>
+      </div>
+    </li>
+  </ul>
+</section>
+
+<!-- ======================= CHAPTER 2 · WORK EXPERIENCE ======================= -->
+
+<section class="step" id="step-work-timeline" data-chapter="2" data-chapter-name="The jobs">
+  <p class="step__kicker">Work experience after varsity</p>
+  <h2>Four jobs, six-and-a-bit years</h2>
+  <!-- Months are counted from January 2020 = 0, so --tl-span is the width of
+       the whole axis in months and --from / --to place each bar on it. -->
+  <ol class="tl" style="--tl-span: 80">
+    <li class="tl__row">
+      <div class="tl__meta">
+        <b>Digsilent Buyisa</b>
+        <span class="tl__role">Junior Software Developer</span>
+        <span class="tl__when">Feb 2020 &ndash; Jul 2020 &middot; 6 months</span>
+      </div>
+      <div class="tl__track"><div class="tl__bar tl__bar--1" style="--from: 1; --to: 7"></div></div>
+    </li>
+    <li class="tl__row">
+      <div class="tl__meta">
+        <b>TypeDev</b>
+        <span class="tl__role">Junior / Intermediate Software Developer</span>
+        <span class="tl__when">Jul 2020 &ndash; Dec 2022 &middot; 2 yrs 6 months</span>
+      </div>
+      <div class="tl__track"><div class="tl__bar tl__bar--2" style="--from: 6; --to: 36"></div></div>
+    </li>
+    <li class="tl__row">
+      <div class="tl__meta">
+        <b>CIMSOLUTIONS</b>
+        <span class="tl__role">Software Engineer</span>
+        <span class="tl__when">Dec 2022 &ndash; Sep 2023 &middot; 10 months</span>
+      </div>
+      <div class="tl__track"><div class="tl__bar tl__bar--3" style="--from: 35; --to: 45"></div></div>
+    </li>
+    <li class="tl__row">
+      <div class="tl__meta">
+        <b>Nedap</b>
+        <span class="tl__role">Software Engineer</span>
+        <span class="tl__when">Sep 2023 &ndash; now &middot; 3 years</span>
+      </div>
+      <div class="tl__track"><div class="tl__bar tl__bar--4" style="--from: 44; --to: 80"></div></div>
+    </li>
+    <li class="tl__axis" aria-hidden="true">
+      <div class="tl__meta"></div>
+      <div class="tl__track">
+        <span style="--at: 0">2020</span>
+        <span style="--at: 12">2021</span>
+        <span style="--at: 24">2022</span>
+        <span style="--at: 36">2023</span>
+        <span style="--at: 48">2024</span>
+        <span style="--at: 60">2025</span>
+        <span style="--at: 72">2026</span>
+      </div>
+    </li>
+  </ol>
+</section>
+
+<section class="step" id="step-work-digsilent" data-chapter="2" data-chapter-name="The jobs">
+  <p class="step__kicker">Job 1 of 4</p>
+  <header class="job">
+    <div>
+      <h2>Digsilent Buyisa</h2>
+      <p class="job__role">Junior Software Developer &middot; Pretoria</p>
+    </div>
+    <div class="job__stamp">
+      <span class="job__dates">Feb 2020 &ndash; Jul 2020</span>
+      <span class="job__dur">6 months</span>
+      <span class="chip chip--a">Found on Indeed</span>
+    </div>
+  </header>
+  <div class="cards">
+    <article class="card">
+      <h3><svg class="card__ic" viewBox="0 0 24 24" width="17" height="17" aria-hidden="true"><circle cx="11" cy="11" r="6.5"/><path d="M16 16l4.5 4.5"/></svg> How I got it</h3>
+      <p>Straight off Indeed. I saw &ldquo;junior developer&rdquo;, applied, and didn&rsquo;t even
+         check what the company actually did.</p>
+    </article>
+    <article class="card card--good">
+      <h3><svg class="card__ic" viewBox="0 0 24 24" width="17" height="17" aria-hidden="true"><path d="M20.5 12.6c0 3.5-3.8 6.3-8.5 6.3-1 0-2-.13-2.9-.37L4 20.5l1.4-3.4C4 15.9 3.5 14.3 3.5 12.6c0-3.5 3.8-6.3 8.5-6.3s8.5 2.8 8.5 6.3z"/></svg> What it was actually like</h3>
+      <p>Not great, honestly. I thought I&rsquo;d learn how development works in the real world –
+         shipping features to production. It wasn&rsquo;t like that. They were an electrical company
+         that plans and monitors substations, and I was coding alerts in Java. Pretty boring.</p>
+    </article>
+  </div>
+</section>
+
+<section class="step" id="step-work-typedev" data-chapter="2" data-chapter-name="The jobs">
+  <p class="step__kicker">Job 2 of 4</p>
+  <header class="job">
+    <div>
+      <h2>TypeDev</h2>
+      <p class="job__role">Junior / Intermediate Software Developer &middot; Pretoria</p>
+    </div>
+    <div class="job__stamp">
+      <span class="job__dates">Jul 2020 &ndash; Dec 2022</span>
+      <span class="job__dur">2 yrs 6 months</span>
+      <span class="chip chip--b">Recruitment agency</span>
+    </div>
+  </header>
+  <div class="cards">
+    <article class="card">
+      <h3><svg class="card__ic" viewBox="0 0 24 24" width="17" height="17" aria-hidden="true"><circle cx="11" cy="11" r="6.5"/><path d="M16 16l4.5 4.5"/></svg> How I got it</h3>
+      <p>I applied while I was still at the first job (lol). I used a recruitment agency to help me
+         find something new, and that&rsquo;s how I landed the interview with TypeDev.</p>
+    </article>
+    <article class="card card--good">
+      <h3><svg class="card__ic" viewBox="0 0 24 24" width="17" height="17" aria-hidden="true"><path d="M20.5 12.6c0 3.5-3.8 6.3-8.5 6.3-1 0-2-.13-2.9-.37L4 20.5l1.4-3.4C4 15.9 3.5 14.3 3.5 12.6c0-3.5 3.8-6.3 8.5-6.3s8.5 2.8 8.5 6.3z"/></svg> What it was actually like</h3>
+      <p>Amazing. A complete 180. Much more aligned with what I wanted to do. Pure software development for clients in the finance industry. I learned
+         to build backends, mobile applications and websites, and deploy them on AWS. I would not
+         have left this company if the chance to work abroad hadn&rsquo;t come up.</p>
+    </article>
+  </div>
+</section>
+
+<section class="step" id="step-work-cimsolutions" data-chapter="2" data-chapter-name="The jobs">
+  <p class="step__kicker">Job 3 of 4</p>
+  <header class="job">
+    <div>
+      <h2>CIMSOLUTIONS</h2>
+      <p class="job__role">Software Engineer &middot; Netherlands</p>
+    </div>
+    <div class="job__stamp">
+      <span class="job__dates">Dec 2022 &ndash; Sep 2023</span>
+      <span class="job__dur">10 months</span>
+      <span class="chip chip--c">LinkedIn recruiter</span>
+    </div>
+  </header>
+  <div class="cards">
+    <article class="card">
+      <h3><svg class="card__ic" viewBox="0 0 24 24" width="17" height="17" aria-hidden="true"><circle cx="11" cy="11" r="6.5"/><path d="M16 16l4.5 4.5"/></svg> How I got it</h3>
+      <p>I always knew I wanted to work in another country, so I started casually applying everywhere
+         until a recruiter from the Netherlands contacted me.
+         They liked my profile and said I should apply for this job. I got the interview and made it in.</p>
+    </article>
+    <article class="card card--good">
+      <h3><svg class="card__ic" viewBox="0 0 24 24" width="17" height="17" aria-hidden="true"><path d="M20.5 12.6c0 3.5-3.8 6.3-8.5 6.3-1 0-2-.13-2.9-.37L4 20.5l1.4-3.4C4 15.9 3.5 14.3 3.5 12.6c0-3.5 3.8-6.3 8.5-6.3s8.5 2.8 8.5 6.3z"/></svg> What it was actually like</h3>
+      <p>I&rsquo;m grateful they brought me over and sponsored my visa. But they were a consultancy,
+         where you have to earn your clients and if you didn&rsquo;t have one, you upskilled a lot.
+         That did get me some certifications in the meantime, but coming from where I came from,
+         I wasn&rsquo;t happy sitting idle for so long.</p>
+    </article>
+  </div>
+</section>
+
+<section class="step" id="step-work-nedap" data-chapter="2" data-chapter-name="The jobs">
+  <p class="step__kicker">Job 4 of 4 &middot; where I am now</p>
+  <header class="job">
+    <div>
+      <h2>Nedap <span class="badge">current</span></h2>
+      <p class="job__role">Software Engineer &middot; Netherlands (Remote)</p>
+    </div>
+    <div class="job__stamp">
+      <span class="job__dates">Sep 2023 &ndash; now</span>
+      <span class="job__dur">3 years</span>
+      <span class="chip chip--c">LinkedIn recruiter</span>
+    </div>
+  </header>
+  <div class="cards">
+    <article class="card">
+      <h3><svg class="card__ic" viewBox="0 0 24 24" width="17" height="17" aria-hidden="true"><circle cx="11" cy="11" r="6.5"/><path d="M16 16l4.5 4.5"/></svg> How I got it</h3>
+      <p>Another recruiter contacted me on LinkedIn and offered me an opportunity with Nedap.
+         I applied, they invited me for an interview, and this is where I am now.</p>
+    </article>
+    <article class="card card--good">
+      <h3><svg class="card__ic" viewBox="0 0 24 24" width="17" height="17" aria-hidden="true"><path d="M20.5 12.6c0 3.5-3.8 6.3-8.5 6.3-1 0-2-.13-2.9-.37L4 20.5l1.4-3.4C4 15.9 3.5 14.3 3.5 12.6c0-3.5 3.8-6.3 8.5-6.3s8.5 2.8 8.5 6.3z"/></svg> What it was actually like</h3>
+      <p>A big challenge. The company is very, very big. Over 3000 employees across many
+         different departments. But honestly, the best company I&rsquo;ve ever worked for to this day.
+         I was in the Netherlands for three years, and now I work remotely with a couple of visits
+         back to Europe every year.</p>
+    </article>
+  </div>
+</section>
+
+<section class="step" id="step-work-pattern" data-chapter="2" data-chapter-name="The jobs">
+  <p class="step__kicker">Notice the pattern</p>
+  <h2>The importance of Networking and Online Presence</h2>
+  <ol class="flow">
+    <li class="flow__node"><span class="flow__n">1</span><b>Indeed</b><span>Job Hunting</span></li>
+    <li class="flow__node"><span class="flow__n">2</span><b>Agency</b><span>Outreach/Headhunted</span></li>
+    <li class="flow__node"><span class="flow__n">3</span><b>LinkedIn</b><span>Outreach/Headhunted</span></li>
+    <li class="flow__node"><span class="flow__n">4</span><b>LinkedIn</b><span>Outreach/Headhunted</span></li>
+  </ol>
+  <p class="punch">Three out of four jobs came to me because someone found my profile.
+    <b>I only went looking once.</b></p>
+</section>
+
+<!-- ======================= CHAPTER 3 · BRIDGING THE GAP ====================== -->
+
+<section class="step" id="step-gap-upskilling" data-chapter="3" data-chapter-name="Bridging the gap">
+  <p class="step__kicker">Bridging the gap &middot; Upskilling</p>
+  <h2>Tools &amp; methodologies</h2>
+  <div class="grid grid--2">
+    <article class="card">
+      <h3>Version control</h3>
+      <p>GitHub, GitLab, Bitbucket.</p>
+      <p class="card__aside">They all basically work the same. Master one, and you can master them all.</p>
+    </article>
+    <article class="card">
+      <h3>Project management tools</h3>
+      <p>Jira, Confluence, GitLab. </p>
+      <p class="card__aside">Where the requirements and information live: tickets, boards, who&rsquo;s doing what, and relevant documentation (this is more important than you would think).</p>
+    </article>
+    <article class="card card--wide">
+      <h3>Agile / Scrum</h3>
+      <ul class="ticks">
+        <li>Stand-ups</li>
+        <li>Sprint planning</li>
+        <li>Sprint refinements</li>
+        <li>Sprint reviews (demos)</li>
+        <li>Sprint retrospectives</li>
+      </ul>
+    </article>
+    <article class="card card--wide">
+      <h3>Cross-team communication</h3>
+      <p>You will not build anything alone. Cross-functional collaboration is always part of the job.</p>
+    </article>
+  </div>
+</section>
+
+<section class="step" id="step-gap-certs" data-chapter="3" data-chapter-name="Bridging the gap">
+  <p class="step__kicker">Bridging the gap</p>
+  <h2>Certifications</h2>
+  <div class="grid grid--3">
+    <article class="card card--accent">
+      <h3>DevOps</h3>
+      <p>These helped me. Pick <b>one</b>: Azure or AWS.</p>
+      <p class="card__aside">Want to go further? There are more options such as Nomad and Kubernetes.</p>
+    </article>
+    <article class="card card--accent">
+      <h3>PSM</h3>
+      <p>Professional Scrum Master. Proves you understand how a project should be managed and executed.</p>
+    </article>
+    <article class="card card--accent">
+      <h3>Language certs</h3>
+      <p>Something like C# or Java.</p>
+    </article>
+  </div>
+</section>
+
+<section class="step" id="step-gap-research" data-chapter="3" data-chapter-name="Bridging the gap">
+  <p class="step__kicker">Bridging the gap</p>
+  <h2>Do your research</h2>
+  <ul class="bigticks">
+    <li><b>Know what you&rsquo;re getting yourself into.</b> Research the companies and know what they actually do.</li>
+    <li><b>Keep up with new technology.</b> Subscribe to short newsletters. TLDR is good.</li>
+    <li><b>Connect with industry leaders on LinkedIn.</b> Your feed becomes part of your learning.</li>
+    <li><b>Use AI</b> <span class="wink">:)</span></li>
+  </ul>
+</section>
+
+<section class="step" id="step-gap-interview" data-chapter="3" data-chapter-name="Bridging the gap">
+  <p class="step__kicker">Tips</p>
+  <h2>Ask the right questions</h2>
+  <ul class="qa">
+    <li><q>Which tools, technologies and frameworks do you use daily?</q><span>&rarr; work</span></li>
+    <li><q>What would my day-to-day tasks look like?</q><span>&rarr; work</span></li>
+    <li><q>How big is the team, and where would I fit into it?</q><span>&rarr; collaboration</span></li>
+    <li><q>How does the team make key project decisions?</q><span>&rarr; collaboration</span></li>
+    <li><q>Is this a remote, hybrid or on-site role?</q><span>&rarr; culture</span></li>
+    <li><q>How does the leave policy and time-logging system work?</q><span>&rarr; culture</span></li>
+  </ul>
+  <p class="note">An interview goes both ways. Asking these makes you look like someone who has done this before.</p>
+</section>
+
+<section class="step" id="step-gap-tips" data-chapter="3" data-chapter-name="Bridging the gap">
+  <p class="step__kicker">Tips</p>
+  <h2>Four things I&rsquo;d tell you</h2>
+  <ol class="tips">
+    <li>
+      <h3>Work with recruiters</h3>
+      <p>It's not just about getting the job, it&rsquo;s making the right match between
+         the company and you.</p>
+    </li>
+    <li>
+      <h3>Networking is NB</h3>
+      <p>The people who know your name are the ones who forward your name.</p>
+    </li>
+    <li>
+      <h3>Learn to <em>understand</em></h3>
+      <p>Not just to pass. Once you&rsquo;re in the workplace you don&rsquo;t want to be the dev who
+         doesn&rsquo;t know what they&rsquo;re doing. Nobody is going to hold your hand forever.</p>
+    </li>
+    <li>
+      <h3>Be proactive</h3>
+      <p>Go after what you want. Take the first steps yourself. The good companies love that.</p>
+    </li>
+  </ol>
+</section>
+
+<!-- =========================== CHAPTER 4 · QUESTIONS ========================= -->
+
+<section class="step step--end" id="step-questions" data-chapter="4" data-chapter-name="Questions">
+  <div class="end">
+    <div class="end__text">
+      <p class="eyebrow">And that&rsquo;s it</p>
+      <h2 class="end__h">Any questions?</h2>
+      <p class="end__blurb">Come find me on LinkedIn &mdash; I&rsquo;m happy to answer things
+        after today too.</p>
+      <a class="linkedin" href="https://www.linkedin.com/in/ryan-simons1" target="_blank" rel="noopener noreferrer">
+        <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M4.98 3.5A2.5 2.5 0 1 0 5 8.5a2.5 2.5 0 0 0 0-5zM3 9.5h4V21H3zM9.5 9.5h3.8v1.6h.05c.53-1 1.83-2.05 3.76-2.05 4.02 0 4.76 2.5 4.76 5.75V21h-4v-5.3c0-1.26-.02-2.9-1.77-2.9-1.77 0-2.04 1.38-2.04 2.8V21h-4z"/></svg>
+        www.linkedin.com/in/ryan-simons1
+      </a>
+      <p class="end__thanks">Thanks, UFS.</p>
+    </div>
+    <figure class="end__qr">
+      <img src="assets/linkedin-qr.svg" alt="QR code linking to www.linkedin.com/in/ryan-simons1" width="240" height="240">
+      <figcaption>Scan to connect</figcaption>
+    </figure>
+  </div>
+</section>
+
+</main>
+
+<footer class="controls">
+  <button class="btn btn--ghost" id="prevBtn" type="button">
+    <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg>
+    Back
+  </button>
+  <p class="counter" id="counter" aria-live="polite"><b>1</b> / 15</p>
+  <button class="btn btn--primary" id="nextBtn" type="button">
+    Next
+    <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg>
+  </button>
+</footer>
+
+<script src="app.js" defer></script>
+</body>
+</html>
